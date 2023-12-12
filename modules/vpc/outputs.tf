@@ -9,9 +9,6 @@ output "subnet_private" {
   value = [for subnet in aws_subnet.subnet_private : subnet.id]
 }
 
-# output "subnet_db" {
-#   value = [for subnet in aws_subnet.subnet_db : subnet.id]
-# }
 
 
 output "vpc_sec_grp" {

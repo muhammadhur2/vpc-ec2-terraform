@@ -52,23 +52,70 @@ main_securitygroup_egress = [
 ]
 
 
-instance_type = "t2.micro"
-ami_id        = "ami-0173ee29ff797c346"  
+# instance_type = "t2.micro"
+# ami_id        = "ami-0173ee29ff797c346"  
 
 
-main_windows_sg_ingress = [
-  {
-    from_port = 3000
-    to_port   = 3000
-    protocol  = "tcp"
+instances = {
+  "instance1" = {
+    ami_id        = "ami-0173ee29ff797c346"
+    instance_type = "t2.micro"
+    subnet_index  = 1
+    sg_ingress    = [
+      {
+        from_port = 80
+        to_port   = 80
+        protocol  = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+    ]
+    sg_egress = [
+      {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+    ]
+  },
+  "instance2" = {
+    ami_id        = "ami-0fc5d935ebf8bc3bc"
+    instance_type = "t2.small"
+    subnet_index  = 2
+    sg_ingress    = [
+      {
+        from_port = 22
+        to_port   = 22
+        protocol  = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+    ]
+    sg_egress = [
+      {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+    ]
   }
-]
+  # Add more instances as needed
+}
 
-main_windows_sg_egress = [
-  {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-]
+
+# main_windows_sg_ingress = [
+#   {
+#     from_port = 3000
+#     to_port   = 3000
+#     protocol  = "tcp"
+#   }
+# ]
+
+# main_windows_sg_egress = [
+#   {
+#     from_port   = 0
+#     to_port     = 0
+#     protocol    = "-1"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
+# ]
