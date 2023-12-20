@@ -5,22 +5,22 @@ environment_name = "terraform"
 vpc_cidr = "10.0.0.0/16"
 subnets-public = {
   "public_subnet1" = {
-    cidr = "10.0.1.0/24"
+    cidr = "10.0.0.0/24"
   },
   "public_subnet2" = {
     cidr = "10.0.3.0/24"
   }
   "public_subnet3" = {
-    cidr = "10.0.5.0/24"
+    cidr = "10.0.4.0/24"
   }
 }
 
 subnets-private = {
   "private_subnet1" = {
-    cidr = "10.0.2.0/24"
+    cidr = "10.0.1.0/24"
   },
   "private_subnet2" = {
-    cidr = "10.0.3.0/24"
+    cidr = "10.0.2.0/24"
   }
 }
 
@@ -80,7 +80,7 @@ instances = {
   },
   "instance2" = {
     ami_id        = "ami-0fc5d935ebf8bc3bc"
-    instance_type = "t2.small"
+    instance_type = "t2.micro"
     subnet_index  = 2
     sg_ingress    = [
       {

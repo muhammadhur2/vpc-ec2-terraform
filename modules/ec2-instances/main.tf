@@ -5,6 +5,8 @@ resource "aws_instance" "windows_server" {
   instance_type           = each.value.instance_type
   subnet_id               = var.subnet_public[each.value.subnet_index]
   vpc_security_group_ids  = [aws_security_group.instance_sg[each.key].id]
+  key_name = "toxic-keypair"
+  associate_public_ip_address = true
 
   tags = {
     Name = "${var.app_name}-${var.environment_name}-windows-ec2-${each.key}"
